@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function(){
     
     galleryImgs.forEach((img,index) =>{
         img.addEventListener('click', function(){
+            //popUpModal.style.display = 'flex';
             popUpModal.style.display = 'block';
             modalImg.src = img.src;
             currentImgIndex = index;
@@ -37,4 +38,16 @@ document.addEventListener('DOMContentLoaded', function(){
 
     nextBtn.addEventListener('click', nextImg);
     prevBtn.addEventListener('click', prevImg);
+
+    document.addEventListener('keydown', (e)=>{
+        if (popUpModal.style.display === 'block') {
+            if(e.key==="ArrowRight"){
+                nextImg();
+            } else if(e.key==='ArrowLeft'){
+                prevImg();
+            } else if(e.key === 'Escape'){
+                popUpModal.style.display='none';
+            }
+        }
+    });
 });
